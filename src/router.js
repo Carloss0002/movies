@@ -1,10 +1,10 @@
 import {Routes, Route} from 'react-router-dom'
 
-import Home from './pages'
-import Filmes from './pages/Meusfilmes'
-import Detalhes from './pages/Detalhes'
-import MelhoresFilmes from './pages/Melhores'
-import Error from './pages/Error'
+import Home from './pages/home'
+import Filmes from './pages/meusFilmes/Meusfilmes'
+import Detalhes from './pages/detalhe/Detalhes'
+import MelhoresFilmes from './pages/melhores/Melhores'
+import Error from './pages/erro/Error'
 
 function Router(){
      return(

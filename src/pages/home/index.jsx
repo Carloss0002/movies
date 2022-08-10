@@ -1,11 +1,16 @@
 import { useEffect, useState } from "react"
-import {Link} from 'react-router-dom'
-import api from '../services/api'
+import Page from '../../components/Page'
+import api from '../../services/api'
 import './Home.css'
 
 function Home(){
     const [filmes, setFilmes] = useState([])
     const[loading, setLoading] = useState(true)
+    const [search, setSearch] = useState('')
+
+
+    const filteredFilmes = search.length > 0 ?
+    filmes.filter(filme => filme.title.includes(search[0].toUpperCase() + search.substr(1))) : [];
 
     useEffect(()=>{
         async function loadFilmes(){
@@ -31,19 +36,18 @@ function Home(){
     }
     return(
         <div className="container">
-             <h1>Principais Lançamentos</h1>
-           <div className="lista-filmes">
-              {filmes.map(filme=>{
-                return(
-                    <article className="art" key={filme.id}>
-                       <div className="card">
-                            <strong name={filme.title}>{filme.title}</strong>
-                            <img src={`https://image.tmdb.org/t/p/original/${filme.poster_path}`} alt={filme.title} />
-                            <Link to={`/filmes/${filme.id}`}>Detalhes</Link>
-                       </div> 
-                    </article>
-                )
-              })}
+             <div className="busca">
+              <h1>Principais Lançamentos</h1>
+                <input
+                type="text"
+                value={search}
+                placeholder="Buscar"
+                onChange={e => setSearch(e.target.value)}
+                />
+             </div>
+          <div className="lista-filmes">
+            
+            <Page filteredFilmes={filteredFilmes} filmes={filmes} search={search} id={1}/>
            </div>
         </div>
     )

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
-import './Home.css'
 import { toast } from 'react-toastify'
-
 import {Link} from 'react-router-dom'
+
+import '../home/Home.css'
 
 function Filmes(){
 

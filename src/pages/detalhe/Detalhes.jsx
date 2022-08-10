@@ -2,10 +2,10 @@ import { useNavigate, useParams } from "react-router-dom";
 import {useState, useEffect} from 'react';
 import { toast } from 'react-toastify';
 
-import api from "../services/api"
+import api from "../../services/api"
 
 import './Detalhe.css'
-import Loading from "../components/Carregando";
+import Loading from "../../components/Carregando";
 
 
 function Detalhes(){

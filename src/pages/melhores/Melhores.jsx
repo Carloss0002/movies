@@ -1,13 +1,17 @@
 import { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
-import Loading from "../components/Carregando"
-import api from "../services/api"
-import './Home.css'
+import Page from "../../components/Page"
+import Loading from "../../components/Carregando"
+import api from "../../services/api"
+import '../home/Home.css'
 
 
 function MelhoresFilmes(){
     const [melhores, setMelhores] = useState([])
     const [loading, setLoading] = useState(true)
+    const [search, setSearch] = useState('')
+
+    const filteredMelhores = search.length > 0 ?
+    melhores.filter(filme => filme.title.includes(search[0].toUpperCase() + search.substr(1))) : [];
 
     useEffect(()=>{
         async function melhoresFilmes(){
@@ -33,18 +37,17 @@ function MelhoresFilmes(){
     
     return(
         <div className="container">
-            <h1>Aclamados pela crítica:</h1>
+            <div className="busca">
+              <h1>Aclamados pela crítica:</h1>
+              <input 
+                    type="text"
+                    value={search}
+                    placeholder="Buscar"
+                    onChange={e => setSearch(e.target.value)}
+                   />
+            </div>
             <div className="lista-filmes">
-                {melhores.map(item=>{
-                    return(
-                        <article key={item.id}>
-                            <div className="card">
-                                <img src={`https://image.tmdb.org/t/p/original/${item.poster_path}`} alt={item.title} />
-                                <Link className="btn-melhores" to={`/filmes/${item.id}`}>Detalhes</Link>
-                            </div>
-                        </article>
-                    )
-                })}
+               <Page filmes={melhores} filteredFilmes={filteredMelhores} search={search} id={2}/>
             </div>
         </div>
     )
