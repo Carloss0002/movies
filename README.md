@@ -1,4 +1,5 @@
 # Prime Flix
+![movie](https://user-images.githubusercontent.com/93801199/194950503-0e3f9cc0-4753-44bb-a9b3-82cf37fcdea4.jpg)
 
 ## Sobre :book:
 
