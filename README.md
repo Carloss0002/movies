@@ -9,7 +9,7 @@
  ## tecnologias
  
  - Html :orange_circle:
- - Css :blue_circle:
+ - Css :blue_book:
  - JS :yellow_circle:
  - react :yellow_square:
  
